@@ -1,8 +1,5 @@
 
-MONTH_NAMES = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
 MONTH_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-NORMAL_YEAR_WEEKDAY_ADVANCE = 1
-LEAP_YEAR_WEEKDAY_ADVANCE = 2
 # Weekdays are 1 - 7 (monday - sunday)
 
 def is_leap_year(year):
