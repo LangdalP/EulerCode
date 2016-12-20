@@ -12,6 +12,7 @@ def gen_all_primes_upto(n):
     return filter(lambda x: x != None, [i if A[i] else None for i in range(2, len(A))])
 
 # Originally had Pollard's rho, but it wasn't reliable
+# Find the lowest prime factor of the given number
 def find_prime_factor_naive(number, known_primes):
     for i in known_primes:
         if number % i == 0:
