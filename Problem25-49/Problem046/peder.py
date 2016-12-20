@@ -18,10 +18,12 @@ many_primes_set = set(many_primes)
 def try_find_square(target_num):
     primes_to_try = filter(lambda x: x < target_num, many_primes)
     for prime in primes_to_try:
-        for i in range(1, 50):
+        sum, i = 0, 0
+        while sum <= target_num:
             sum = prime + 2*(i**2)
             if sum == target_num:
                 return True
+            i += 1
     return False
 
 for i in range(11, UPPER_LIMIT, 2):
