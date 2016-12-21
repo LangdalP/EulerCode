@@ -1,5 +1,5 @@
 
-class BigInteger:
+class LangInteger:
     '''
     Class for simple big integer (> 64 bits) operations for learning purposes
     Internally uses a base-10 string representation
@@ -7,12 +7,8 @@ class BigInteger:
     '''
 
     def __init__(self, init_value=0):
-        # TODO: Remove these tests if the same is done in all vases
-        if type(init_value) is int or type(init_value) is float or type(init_value) is str:
-            self.value = str(init_value)
-        else:
-            self.value = None
-            raise ValueError('Invalid initial value!')
+        # Assume init_value is int or string of int
+        self.value = str(init_value)
 
     def nth_digit_lsd(self, n):
         # The least significant digit is the 0-th digit
@@ -26,8 +22,8 @@ class BigInteger:
             return None
         return int(self.value[n])
 
-    def num_digits(self):
-        return len(self.value)
+    def sum_digits(self):
+        return reduce(lambda x, y: int(x) + int(y), self.value)
 
     def compare(self, other):
         # 1 means self is largest, 0 means equal numbers, -1 means other is largest
@@ -47,8 +43,8 @@ class BigInteger:
         return 0
 
     def add(self, other):
-        my_length = self.num_digits()
-        other_length = other.num_digits()
+        my_length = len(self)
+        other_length = len(other)
         longest_addend = max(my_length, other_length)
         digits = ""
         carry = 0
@@ -65,11 +61,11 @@ class BigInteger:
         if carry == 1:
             digits = digits + str(1)
         digits_reversed = digits[::-1]
-        return BigInteger(digits_reversed)
+        return LangInteger(digits_reversed)
 
     def multiply(self, other):
-        my_length = self.num_digits()
-        other_length = other.num_digits()
+        my_length = len(self)
+        other_length = len(other)
         longest_factor = max(my_length, other_length)
         subsums = []
         if my_length >= other_length:
@@ -98,9 +94,9 @@ class BigInteger:
                 subsum_string += "0"
             subsums.append(subsum_string)
         # Second addition part
-        sum = BigInteger("0")
+        sum = LangInteger("0")
         for subsum in subsums:
-            subsum_bigint = BigInteger(subsum)
+            subsum_bigint = LangInteger(subsum)
             sum = sum.add(subsum_bigint)
         return sum
 
@@ -111,10 +107,10 @@ class BigInteger:
         return str(self.value)
 
 if __name__ == "__main__":
-    num1 = BigInteger("469")
-    num2 = BigInteger("32")
+    num1 = LangInteger("469")
+    num2 = LangInteger("32")
     print(num1.multiply(num2))
-    num3 = BigInteger("5127")
-    num4 = BigInteger("4265")
+    num3 = LangInteger("5127")
+    num4 = LangInteger("4265")
     print(num3.multiply(num4))
 
