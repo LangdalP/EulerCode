@@ -100,10 +100,19 @@ class LangInteger:
             sum = sum.add(subsum_bigint)
         return sum
 
+    def to_power_of(self, power):
+        result = LangInteger(self)
+        for i in range(power - 1):
+            result = result.multiply(self)
+        return result
+
     def __len__(self):
         return len(self.value)
 
     def __repr__(self):
+        return str(self.value)
+
+    def __str__(self):
         return str(self.value)
 
 if __name__ == "__main__":
@@ -113,4 +122,7 @@ if __name__ == "__main__":
     num3 = LangInteger("5127")
     num4 = LangInteger("4265")
     print(num3.multiply(num4))
+    num5 = LangInteger("5")
+    print(num5.to_power_of(2))
+    print(num5.to_power_of(3))
 
