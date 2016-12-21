@@ -1,7 +1,7 @@
-from bigint import BigInteger
+from langint import LangInteger
 
-number = BigInteger("2")
-two = BigInteger("2")
+number = LangInteger("2")
+two = LangInteger("2")
 for i in range(2, 1001):
     number = number.multiply(two)
 

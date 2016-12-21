@@ -99,13 +99,13 @@ numbers = [37107287533902102798797998220837590246510135740250,
     20849603980134001723930671666823555245252804609722,
     53503534226472524250874054075591789781264330331690]
 
-from bigint import BigInteger
+from langint import LangInteger
 
-sum = BigInteger(0)
+sum = LangInteger(0)
 for number in numbers:
-    num_as_bigint = BigInteger(str(number))
-    sum = sum.add(num_as_bigint)
+    num_as_langint = LangInteger(str(number))
+    sum = sum.add(num_as_langint)
 
 print(sum)
 print(str(sum)[:10])
-print(sum.num_digits())
+print(len(sum))
