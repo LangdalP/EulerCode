@@ -28,7 +28,7 @@ class BigInteger:
         my_length = self.num_digits()
         other_length = other.num_digits()
         longest_addend = max(my_length, other_length)
-        digit_list = []
+        digits = ""
         carry = 0
         for i in range(0, longest_addend):
             my_digit = self.nth_digit_lsd(i) if i < my_length else 0
@@ -39,20 +39,21 @@ class BigInteger:
                 carry = 1
             else:
                 carry = 0
-            digit_list.append(str(digits_added))
+            digits = digits + str(digits_added)
         if carry == 1:
-            digit_list.append(str(1))
-        digit_list_corrected = digit_list[::-1]
-        # TODO: Return bigint
-        result = reduce(lambda x, y: x + y, digit_list_corrected)
-        return BigInteger(result)
+            digits = digits + str(1)
+        digits_reversed = digits[::-1]
+        return BigInteger(digits_reversed)
 
     def __repr__(self):
         return str(self.value)
 
 if __name__ == "__main__":
-    num1 = BigInteger(11)
-    num2 = BigInteger(2000000)
+    # Just some basic testing
+    num1 = BigInteger("1")
+    num2 = BigInteger("99999999999999999999999999999999999999999999999999999999")
     num3 = num1.add(num2)
+    print(num2.num_digits())
+    print(num3.num_digits())
     print(num3)
 
