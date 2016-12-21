@@ -1,10 +1,9 @@
 
 class BigInteger:
     '''
-    Class for simple big integer (> 64 bits) operations
+    Class for simple big integer (> 64 bits) operations for learning purposes
     Internally uses a base-10 string representation
-    Python's 'long' type is the preferred way to do such operations.
-    This class is simply made to learn how BigIntegers can be implemented.
+    TODO: Support negative numbers
     '''
 
     def __init__(self, init_value=0):
@@ -79,7 +78,6 @@ class BigInteger:
         else:
             upper_number = other
             lower_number = self
-        # print("Starting mult. Up: {} Low {}".format(upper_number, lower_number))
         # First multiplication step
         for i in range(len(lower_number)):
             carry = 0
@@ -89,11 +87,9 @@ class BigInteger:
                 lo_digit = lower_number.nth_digit_lsd(i)
                 multiplied = up_digit * lo_digit + carry
                 carry = 0
-                # print("Upd: {} Lod: {} Mult: {}".format(up_digit, lo_digit, multiplied))
                 while multiplied >= 10:
                     carry += 1
                     multiplied -= 10
-                # print("Adding {} to subsum".format(multiplied))
                 subsum_string += str(multiplied)
             if carry > 0:
                 subsum_string += str(carry)
